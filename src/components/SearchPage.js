@@ -1,6 +1,25 @@
 import React from "react";
 import "../styles/SearchPage.css";
 import { Button } from "@material-ui/core";
+import SearchResult from "./SearchResult"
+import data from "../data.json";
+
+
+function createResult(resultTerm) {
+    return (
+      <SearchResult
+        key={resultTerm.id}
+        img={resultTerm.img}
+        location={resultTerm.location}
+
+        title={resultTerm.title}
+        description={resultTerm.description}
+star={resultTerm.star}
+        price={resultTerm.price}
+        total={resultTerm.total}
+      />
+    );
+  }
 
 function SearchPage() {
   return <div className="searchPage">
@@ -14,6 +33,8 @@ function SearchPage() {
                 <Button variant="outlined">Rooms and beds</Button>
                 <Button variant="outlined">More filters</Button>
   </div>
+  {data.results.map(createResult)}
+  
   </div>;
 }
 
